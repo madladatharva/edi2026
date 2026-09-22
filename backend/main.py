@@ -194,23 +194,8 @@ def get_replay_data(model: str = Query("rule_based"), db: Session = Depends(get_
             if hour % 6 != 0:
                 continue
                 
-            risk = calculate_risk(float(row["elevation_m"]), int(row["drainage_capacity_score"]), float(row["rainfall_mm"]), use_ml)
-            
             z = zones_lookup[row["zone_id"]]
-            frames[ts].append({
-                "zone_id": z.zone_id,
-                "name": z.name,
-                "latitude": z.latitude,
-                "longitude": z.longitude,
-                "elevation_m": z.elevation_m,
-                "drainage_capacity_score": z.drainage_capacity_score,
-                "current_rainfall_mm": float(row["rainfall_mm"]),
-                "geojson_polygon": z.geojson_polygon,
-                "risk_score": risk["score"],
-                "risk_band": risk["band"],
-                "risk_breakdown": risk["breakdown"],
-                "confidence": risk.get("confidence")
-            })
+            frames[ts].append(_build_zone_risk(z, float(row["rainfall_mm"]), use_ml))
             
     sorted_frames = [{"timestamp": k, "zones": v} for k, v in sorted(frames.items())]
     return sorted_frames

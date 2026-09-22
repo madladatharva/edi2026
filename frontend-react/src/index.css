@@ -9,3 +9,7 @@
   width: 100%;
   background-color: #18181b;
 }
+
+.map-tiles {
+  filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.7);
+}

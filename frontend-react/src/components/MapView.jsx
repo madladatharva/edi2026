@@ -5,9 +5,9 @@ import 'leaflet/dist/leaflet.css';
 
 // Mock Citizen Reports
 const citizenReports = [
-  { id: 1, lat: 18.5204, lon: 73.8567, image: "https://images.unsplash.com/photo-1547683905-f30e6122d25e?auto=format&fit=crop&w=400&q=80", text: "Severe waterlogging near PMC building. Cars submerged." },
-  { id: 2, lat: 18.5362, lon: 73.8739, image: "https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?auto=format&fit=crop&w=400&q=80", text: "Drain overflow on Bund Garden Road." },
-  { id: 3, lat: 18.5089, lon: 73.8258, image: "https://images.unsplash.com/photo-1595159048386-b48ff2f5d90e?auto=format&fit=crop&w=400&q=80", text: "Tree down and heavy flooding near Kothrud." }
+  { id: 1, lat: 18.5204, lon: 73.8567, image: "https://upload.wikimedia.org/wikipedia/commons/6/66/Mutha_River_in_August_2019_Flood_at_Vitthalwadi._Pune.jpg", text: "Severe waterlogging near PMC building. Cars submerged." },
+  { id: 2, lat: 18.5362, lon: 73.8739, image: "https://upload.wikimedia.org/wikipedia/commons/9/95/Vitthal_Temple_on_the_banks_of_Mutha_River%2C_Pune.jpg", text: "Drain overflow on Bund Garden Road." },
+  { id: 3, lat: 18.5089, lon: 73.8258, image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Mutha_River_in_August_2019_Flood_at_Vitthalwadi._Pune.jpg/640px-Mutha_River_in_August_2019_Flood_at_Vitthalwadi._Pune.jpg", text: "Tree down and heavy flooding near Kothrud." }
 ];
 
 const cameraIconHtml = `<div style="background-color: #dc2626; border-radius: 50%; border: 2px solid white; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; color: white;">
@@ -64,8 +64,9 @@ export default function MapView({ zones, selectedZone, setSelectedZone, highligh
         <LayersControl position="topright">
           <LayersControl.BaseLayer name="Dark Street" checked>
             <TileLayer
-              attribution='&copy; <a href="https://carto.com/">CartoDB</a>'
-              url='https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?v=2'
+              className="map-tiles"
             />
           </LayersControl.BaseLayer>
           <LayersControl.BaseLayer name="Satellite">
@@ -87,6 +88,7 @@ export default function MapView({ zones, selectedZone, setSelectedZone, highligh
                 url={`https://tilecache.rainviewer.com${radarPath}/256/{z}/{x}/{y}/2/1_1.png`}
                 opacity={0.6}
                 zIndex={10}
+                maxNativeZoom={7}
               />
             </LayersControl.Overlay>
           )}
