@@ -1,0 +1,205 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.8377,
+          18.525977
+        ]
+      },
+      "properties": {
+        "zone_id": "Z-001",
+        "name": "Shivajinagar Station",
+        "latitude": 18.525977,
+        "longitude": 73.8377,
+        "elevation_m": 553.25,
+        "drainage_capacity_score": 2,
+        "historical_flood_incidents": 10,
+        "current_rainfall_mm": 3.68
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.872387,
+          18.527468
+        ]
+      },
+      "properties": {
+        "zone_id": "Z-002",
+        "name": "Deccan Gymkhana",
+        "latitude": 18.527468,
+        "longitude": 73.872387,
+        "elevation_m": 547.61,
+        "drainage_capacity_score": 4,
+        "historical_flood_incidents": 6,
+        "current_rainfall_mm": 0.15
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.856914,
+          18.509146
+        ]
+      },
+      "properties": {
+        "zone_id": "Z-003",
+        "name": "Kothrud Stand",
+        "latitude": 18.509146,
+        "longitude": 73.856914,
+        "elevation_m": 545.8,
+        "drainage_capacity_score": 2,
+        "historical_flood_incidents": 13,
+        "current_rainfall_mm": 1.1
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.869077,
+          18.523971
+        ]
+      },
+      "properties": {
+        "zone_id": "Z-004",
+        "name": "Swargate Junction",
+        "latitude": 18.523971,
+        "longitude": 73.869077,
+        "elevation_m": 545.19,
+        "drainage_capacity_score": 2,
+        "historical_flood_incidents": 13,
+        "current_rainfall_mm": 1.7
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.874989,
+          18.506619
+        ]
+      },
+      "properties": {
+        "zone_id": "Z-005",
+        "name": "Camp Area",
+        "latitude": 18.506619,
+        "longitude": 73.874989,
+        "elevation_m": 555.1,
+        "drainage_capacity_score": 1,
+        "historical_flood_incidents": 13,
+        "current_rainfall_mm": 0.48
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.860849,
+          18.5343
+        ]
+      },
+      "properties": {
+        "zone_id": "Z-006",
+        "name": "FC Road",
+        "latitude": 18.5343,
+        "longitude": 73.860849,
+        "elevation_m": 569.21,
+        "drainage_capacity_score": 4,
+        "historical_flood_incidents": 2,
+        "current_rainfall_mm": 4.87
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.858782,
+          18.515541
+        ]
+      },
+      "properties": {
+        "zone_id": "Z-007",
+        "name": "JM Road",
+        "latitude": 18.515541,
+        "longitude": 73.858782,
+        "elevation_m": 569.88,
+        "drainage_capacity_score": 5,
+        "historical_flood_incidents": 2,
+        "current_rainfall_mm": 2.89
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.838533,
+          18.528583
+        ]
+      },
+      "properties": {
+        "zone_id": "Z-008",
+        "name": "Sadashiv Peth",
+        "latitude": 18.528583,
+        "longitude": 73.838533,
+        "elevation_m": 551.84,
+        "drainage_capacity_score": 3,
+        "historical_flood_incidents": 7,
+        "current_rainfall_mm": 4.28
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.851905,
+          18.535059
+        ]
+      },
+      "properties": {
+        "zone_id": "Z-009",
+        "name": "Narayan Peth",
+        "latitude": 18.535059,
+        "longitude": 73.851905,
+        "elevation_m": 558.6,
+        "drainage_capacity_score": 3,
+        "historical_flood_incidents": 7,
+        "current_rainfall_mm": 1.85
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.847379,
+          18.50878
+        ]
+      },
+      "properties": {
+        "zone_id": "Z-010",
+        "name": "Erandwane",
+        "latitude": 18.50878,
+        "longitude": 73.847379,
+        "elevation_m": 573.1,
+        "drainage_capacity_score": 1,
+        "historical_flood_incidents": 8,
+        "current_rainfall_mm": 2.67
+      }
+    }
+  ]
+}

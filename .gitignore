@@ -1,0 +1,20 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.DS_Store
+
+# Frontend
+node_modules/
+dist/
+.vite/
+
+# Python virtual environment (if any inside here)
+venv/
+env/
+.venv/
+
+# Ignore large data dumps if any (though we keep synthetic ones for demo)
+# data/processed/*.csv
+backend/flood_nowcast.db
