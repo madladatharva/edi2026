@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, GeoJSON, Polyline, Popup, useMap, LayersControl, Marker, FeatureGroup } from 'react-leaflet';
 import L from 'leaflet';
-import { Camera } from 'lucide-react';
-import { renderToString } from 'react-dom/server';
 import 'leaflet/dist/leaflet.css';
 
 // Mock Citizen Reports
@@ -12,7 +10,9 @@ const citizenReports = [
   { id: 3, lat: 18.5089, lon: 73.8258, image: "https://images.unsplash.com/photo-1595159048386-b48ff2f5d90e?auto=format&fit=crop&w=400&q=80", text: "Tree down and heavy flooding near Kothrud." }
 ];
 
-const cameraIconHtml = renderToString(<Camera className="text-white w-5 h-5 p-1 bg-red-600 rounded-full border-2 border-white shadow-lg" />);
+const cameraIconHtml = `<div style="background-color: #dc2626; border-radius: 50%; border: 2px solid white; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; color: white;">
+  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+</div>`;
 const cameraIcon = L.divIcon({
   html: cameraIconHtml,
   className: '',
