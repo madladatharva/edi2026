@@ -7,7 +7,7 @@ The system is designed to provide localized, sub-ward level flood risk predictio
 
 While full-scale smart city deployments rely on expensive real-time sensors, IoT radar integrations, and enterprise SCADA systems, this project successfully proves the core conceptual logic: combining topographical vulnerabilities with live rain data to instantly visualize risk and allow disaster management operators to act quickly.
 
-## Key Features (Phase 7)
+## Key Features (Phase 8)
 - **Dual-Engine Risk Modeling**: Toggle between a physics-inspired rule-based heuristic and a pre-trained Random Forest ML model.
 - **Explainable Predictions**: View the specific contributions of elevation, drainage capacity, and rainfall for any given risk score.
 - **Interactive React Dashboard**: A polished Vite + React + Tailwind frontend with real-time map updates via Leaflet.
@@ -18,19 +18,7 @@ While full-scale smart city deployments rely on expensive real-time sensors, IoT
 - **Live Open-Meteo Integration**: Fetches real-time precipitation data for Pune.
 - **Automated PDF Reports**: Generate and download a snapshot of current city-wide risk levels.
 
-## Team Contributions
 
-This repository is built and maintained collaboratively. Specific modules are owned by the following members:
-
-| Role | Placeholder Name | Responsibility |
-|---|---|---|
-| Team Lead / Integration | Member A | Overall architecture, integration of modules, final demo assembly |
-| Data Engineer | Member B | Dataset sourcing/synthesis, cleaning, elevation + rainfall pipelines |
-| ML/Risk Model Owner | Member C | Risk scoring model (rule-based → ML upgrade path), validation |
-| Backend Developer | Member D | API layer (FastAPI), data serving, endpoints |
-| Frontend/GIS Visualization | Member E | Map dashboard (Leaflet/Folium), risk overlay UI |
-
-*Note to Grader: Individual code ownership is documented within the file headers and inline comments of each respective script.*
 
 ## Project Setup & Run Instructions
 
