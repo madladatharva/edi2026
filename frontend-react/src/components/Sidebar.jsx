@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CloudRain, CloudLightning, Loader2, Play, Square, FastForward, Clock, Route, MapPin } from 'lucide-react';
+import { CloudRain, CloudLightning, Loader2, Play, Square, FastForward, Clock, Route, MapPin, AlertTriangle, CheckCircle } from 'lucide-react';
 import { t } from '../dict';
 
 export default function Sidebar({ 
@@ -25,6 +25,15 @@ export default function Sidebar({
   setRouteDest
 }) {
   const [sliderValue, setSliderValue] = useState(0);
+  const [broadcastState, setBroadcastState] = useState('idle');
+
+  const handleBroadcast = () => {
+    setBroadcastState('broadcasting');
+    setTimeout(() => {
+      setBroadcastState('sent');
+      setTimeout(() => setBroadcastState('idle'), 3000);
+    }, 2500);
+  };
 
   const handleSlider = (e) => {
     setSliderValue(e.target.value);
@@ -126,6 +135,24 @@ export default function Sidebar({
                  </select>
               </div>
            </div>
+        </div>
+
+        {/* Emergency Actions */}
+        <div className="bg-zinc-950 p-4 rounded-xl border border-red-900/50 mb-6 shadow-[0_0_15px_rgba(220,38,38,0.1)] relative overflow-hidden">
+           <div className="flex items-center text-red-400 text-sm font-bold mb-3">
+             <AlertTriangle className="w-4 h-4 mr-2" /> Emergency Actions
+           </div>
+           
+           <button 
+            onClick={handleBroadcast}
+            disabled={broadcastState !== 'idle' || counts.Severe === 0}
+            className={`w-full font-medium py-2 px-4 rounded-lg flex items-center justify-center transition-colors text-sm ${counts.Severe === 0 ? 'bg-zinc-800 text-zinc-500 cursor-not-allowed' : broadcastState === 'sent' ? 'bg-emerald-600 text-white' : 'bg-red-600 hover:bg-red-500 text-white shadow-[0_0_10px_rgba(220,38,38,0.4)]'}`}
+           >
+             {broadcastState === 'broadcasting' && <><Loader2 className="w-4 h-4 animate-spin mr-2" /> Broadcasting SMS...</>}
+             {broadcastState === 'sent' && <><CheckCircle className="w-4 h-4 mr-2" /> Alerts Sent ({counts.Severe * 12500} citizens)</>}
+             {broadcastState === 'idle' && <><AlertTriangle className="w-4 h-4 mr-2" /> Broadcast Evacuation SMS</>}
+           </button>
+           {counts.Severe === 0 && <p className="text-[10px] text-zinc-500 mt-2 text-center">No severe zones detected.</p>}
         </div>
 
         {/* Historical Replay */}

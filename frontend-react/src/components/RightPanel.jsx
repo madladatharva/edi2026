@@ -1,6 +1,6 @@
 import React from 'react';
 import { X, Navigation, CloudRain, Mountain, TrendingUp, Droplet, ArrowDownToLine } from 'lucide-react';
-import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip as RechartsTooltip, ResponsiveContainer } from 'recharts';
+import { AreaChart, Area, CartesianGrid, XAxis, YAxis, Tooltip as RechartsTooltip, ResponsiveContainer } from 'recharts';
 import { t } from '../dict';
 
 export default function RightPanel({ selectedZone, onClose, lang, allZones }) {
@@ -14,14 +14,14 @@ export default function RightPanel({ selectedZone, onClose, lang, allZones }) {
   const { risk_breakdown, risk_band, risk_score } = selectedZone;
   const currentRain = selectedZone.current_rainfall_mm || 0;
 
-  const mockTrend = [
-    { hour: '-6h', rain: Math.max(0, currentRain - 15 + Math.random()*10) },
-    { hour: '-5h', rain: Math.max(0, currentRain - 5 + Math.random()*10) },
-    { hour: '-4h', rain: Math.max(0, currentRain + 5 + Math.random()*10) },
-    { hour: '-3h', rain: Math.max(0, currentRain - 2 + Math.random()*10) },
-    { hour: '-2h', rain: Math.max(0, currentRain + 8 + Math.random()*10) },
-    { hour: 'Now', rain: currentRain }
-  ].map(d => ({ ...d, rain: Number(d.rain.toFixed(1)) }));
+  const mockRiskTrend = Array.from({ length: 24 }, (_, i) => {
+    const hour = i + 1;
+    const stormPeak = Math.sin((hour / 24) * Math.PI) * 4; 
+    return {
+      hour: `+${hour}h`,
+      risk: Number(Math.min(10, Math.max(0, risk_score + stormPeak + (Math.random() * 0.5 - 0.25))).toFixed(1))
+    };
+  });
 
   const bandColors = {
     Low: 'text-emerald-500',
@@ -136,19 +136,25 @@ export default function RightPanel({ selectedZone, onClose, lang, allZones }) {
            </div>
         </div>
 
-        <h3 className="text-zinc-400 uppercase tracking-wider text-xs font-bold mb-3">{t('trend', lang)}</h3>
+        <h3 className="text-zinc-400 uppercase tracking-wider text-xs font-bold mb-3">24-Hour Risk Forecast</h3>
         <div className="bg-zinc-950 rounded-xl p-4 border border-zinc-800 h-48">
           <ResponsiveContainer width="100%" height="100%">
-            <LineChart data={mockTrend} margin={{ top: 5, right: 10, left: -30, bottom: 0 }}>
+            <AreaChart data={mockRiskTrend} margin={{ top: 5, right: 10, left: -30, bottom: 0 }}>
+              <defs>
+                <linearGradient id="colorRisk" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor="#f87171" stopOpacity={0.4}/>
+                  <stop offset="95%" stopColor="#f87171" stopOpacity={0}/>
+                </linearGradient>
+              </defs>
               <CartesianGrid strokeDasharray="3 3" stroke="#27272a" vertical={false} />
-              <XAxis dataKey="hour" axisLine={false} tickLine={false} tick={{ fill: '#a1a1aa', fontSize: 11 }} />
-              <YAxis axisLine={false} tickLine={false} tick={{ fill: '#a1a1aa', fontSize: 11 }} />
+              <XAxis dataKey="hour" axisLine={false} tickLine={false} tick={{ fill: '#a1a1aa', fontSize: 10 }} interval={3} />
+              <YAxis axisLine={false} tickLine={false} tick={{ fill: '#a1a1aa', fontSize: 11 }} domain={[0, 10]} />
               <RechartsTooltip 
                 contentStyle={{ backgroundColor: '#18181b', borderColor: '#3f3f46', borderRadius: '8px' }}
-                itemStyle={{ color: '#38bdf8' }}
+                itemStyle={{ color: '#f87171' }}
               />
-              <Line type="monotone" dataKey="rain" stroke="#38bdf8" strokeWidth={2} dot={{ fill: '#18181b', strokeWidth: 2, r: 4 }} />
-            </LineChart>
+              <Area type="monotone" dataKey="risk" stroke="#f87171" strokeWidth={2} fillOpacity={1} fill="url(#colorRisk)" />
+            </AreaChart>
           </ResponsiveContainer>
         </div>
       </div>
